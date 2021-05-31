@@ -1,0 +1,14 @@
+name: h2icodefactory
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - scipy
+  - geopandas
+  - pandas
+  - rasterio
+  - jupyter
+
+ 
