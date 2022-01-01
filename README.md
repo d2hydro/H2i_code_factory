@@ -1,2 +1,2 @@
-# H2i_code_factory
-Code factory for H2i data preperation
+# H2Flo code factory
+Data and scripts for H2Flo
