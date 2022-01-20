@@ -1,0 +1,11 @@
+{
+	"api_version": "2022.01.20",
+	"topology_version": "2022.01.20",
+	"results_version": "2022.01.20",
+	"name": "de tol small",
+	"crs": "epsg:28992",
+	"topology": {
+		"2d_nodes_file": "node_coordinates.dia",
+		"2d_links_file": "link_coordinates.dia"
+	}
+}
