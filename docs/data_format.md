@@ -19,14 +19,14 @@ A JSON file containing the metadata of a H2Flo project. The content of keys are 
 
 ## Grids
 The grids-folder contains the following files:
-* link_coordinates.dia: A space-seperated-value ASCI file with the following columns:
- 1. **id**: int, unique index for the link – ordinal (1-based)
- 2. **direction**: int, direction of flow; 0 = horizontal, 1 = vertical
- 3. **node_from**: int, id of the links first node
- 4. **node_to**: int, id of the links last node
- 5. **x_from**: x-coordinate of the links first node
- 6. **y_from**: y-coordinate of the links first node
- 7. **x_to**: x-coordinate of the links last node
- 8. **y_to**: y-coordinate of the links last node
- 9. **zmin**: float, minimum level at the velocity-face
- 10. **zmax**: float, maximum level at the velocity-face
+* **link_coordinates.dia**: A space-seperated-value ASCI file with the following columns:
+    1. **id**: int, unique index for the link – ordinal (1-based)
+    2. **direction**: int, direction of flow; 0 = horizontal, 1 = vertical
+    3. **node_from**: int, id of the links first node
+    4. **node_to**: int, id of the links last node
+    5. **x_from**: x-coordinate of the links first node
+    6. **y_from**: y-coordinate of the links first node
+    7. **x_to**: x-coordinate of the links last node
+    8. **y_to**: y-coordinate of the links last node
+    9. **zmin**: float, minimum level at the velocity-face
+    10. **zmax**: float, maximum level at the velocity-face
