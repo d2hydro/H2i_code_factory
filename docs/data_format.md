@@ -38,7 +38,7 @@ The grids-folder contains the following files with a structure as explained:
  1. **id**: int, unique index for the node – ordinal (1-based)
  2. **x**: float, x-coordinate of the node
  3. **y**: float, y-coordinate of the node
- 4. **???**: int, ???
+ 4. **ridge**: int, indicates if it is a node adjacent to a ridge; 0 = no-ridge, 1 = ridge
  5. **dxy**: float, size in x and y direction of the node-cell (quadtree cell size in meters
  6. **zmin**: float, minimum level in the node-cell
  7. **zmax**: float, maximum level at the node-cell
