@@ -8,6 +8,9 @@ A JSON file containing the metadata of a H2Flo project. The content of keys are 
 * **results_version**: reference to the version of flows.exe, writing the result files (by absence of versioning the date the exe is compiled)
 * **name**: a user-supplied name for the model-case that can be used as a name for grouping the results in QGIS
 * **crs**: EPSG-code of the coordinate reference system the model is in
+* **timesteps**: object referencing to a:
+    * **timesteps_file**: file with timesteps specified (see Flows/ts)
+    * **start_datetime**: ISO8601 formatted datetime string: YYYY-MM-DDThh:mm:ss
 * **topology**: object referencing to the files describing the model topology:
     * **2d_nodes_file**: file in the grids-folder with the node coordinates of the 2D model
     * **2d_links_file**: file in the grids-folder with the link coordinates of the 2D model
@@ -15,7 +18,7 @@ A JSON file containing the metadata of a H2Flo project. The content of keys are 
     * **layer**: the layer-name of the output variable for reference in QGIS
     * **result_file**: file in the flows\ts folder with result-values
     * **topology_file**: reference to the topology file (2d_nodes_file or 2d_links_file) the result_file is to be referenced to
-    * **time_specs_file**: reference to the file with time specifications
+    * **timesteps_file**: reference to the file with time specifications
 
 ## Grids
 The grids-folder contains the following files with a structure as explained:
