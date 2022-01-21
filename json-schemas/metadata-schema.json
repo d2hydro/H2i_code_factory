@@ -1,0 +1,122 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"type": "object",
+	"required": [
+		"api_version",
+		"topology_version",
+		"results_version",
+		"name",
+		"crs",
+		"timesteps",
+		"topology",
+		"results"
+	],
+	"properties": {
+		"api_version": {
+			"type": "string"
+		},
+		"topology_version": {
+			"type": "string"
+		},
+		"results_version": {
+			"type": "string"
+		},
+		"name": {
+			"type": "string"
+		},
+		"crs": {
+			"type": "string"
+		},
+		"timesteps": {
+			"type": "object",
+			"required": [
+				"timesteps_file",
+				"start_datetime"
+			],
+			"properties": {
+				"timesteps_file": {
+					"type": "string"
+				},
+				"start_datetime": {
+					"type": "string",
+					"format": "date-time"
+				}
+			}
+		},
+		"topology": {
+			"type": "object",
+			"required": [
+				"2d_nodes_file",
+				"2d_links_file"
+			],
+			"properties": {
+				"2d_nodes_file": {
+					"type": "string"
+				},
+				"2d_links_file": {
+					"type": "string"
+				}
+			}
+		},
+		"results": {
+			"type": "array",
+			"items": {
+				"$ref": "#/$defs/result"
+			}
+		}
+	},
+	"$defs": {
+		"result": {
+			"type": "object",
+			"required": [
+				"layer",
+				"result_file",
+				"type",
+				"units",
+				"topology_file",
+				"timesteps_file"
+			],
+			"properties": {
+				"layer": {
+					"type": "string"
+				},
+				"result_file": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string",
+					"enum": [
+						"depth",
+						"level",
+						"volume",
+						"discharge",
+						"velocity"
+					]
+				},
+				"units": {
+					"type": "string",
+					"enum": [
+						"m",
+						"m3",
+						"m+datum",
+						"m3/s",
+						"m/s"
+					]
+				},
+				"topology_file": {
+					"type": "string",
+					"enum": [
+						"2d_links_file",
+						"2d_nodes_file"
+					]
+				},
+				"timesteps_file": {
+					"type": "string",
+					"enum": [
+						"timesteps_file"
+					]
+				}
+			}
+		}
+	}
+}
