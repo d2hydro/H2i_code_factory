@@ -14,8 +14,8 @@
 			"rows": 706,
 			"columns": 645,
 			"cell_size": 0.5,
-			"xllcorer": 0,
-			"yllcorer": 0,
+			"xllcorner": 0,
+			"yllcorner": 0,
 			"nodata": -99
 		},
 		"node_dem": {
@@ -28,11 +28,11 @@
 		}
 	},
 	"topology": {
-		"2d_nodes_file": {
+		"2d_nodes": {
 			"file": "grids/grid.gpkg",
 			"layer": "node_coordinates"
 		},
-		"2d_links_file": {
+		"2d_links": {
 			"file": "grids/grid.gpkg",
 			"layer": "link_coordinates"
 		}
