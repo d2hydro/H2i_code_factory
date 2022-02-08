@@ -1,17 +1,48 @@
 {
-	"api_version": "0.0.0",
-	"topology_version": "2022.01.21",
-	"results_version": "2022.01.21",
+	"module_version": "0.0.1",
+	"gridgen_version": "win_22_1_0",
+	"flow_version": "win_22_1_0",
 	"name": "de tol small",
 	"crs": "epsg:28992",
 	"timesteps": {
 		"timesteps_file": "flows/ts/timesteps.asc",
 		"start_datetime": "2001-01-01T00:00:00"
 	},
-	"topology": {
-		"2d_nodes_file": "grids/node_coordinates.dia",
-		"2d_links_file": "grids/link_coordinates.dia"
+	"subgrid": {
+		"elevation": {
+			"file": "../depthfile,imax=   642,jmax=   706.  1",
+			"rows": 706,
+			"columns": 645,
+			"cell_size": 0.5,
+			"xllcorer": 0,
+			"yllcorer": 0,
+			"nodata": -99
+		},
+		"node_dem": {
+			"file": "grids/node_dem.dia",
+			"rows": 680,
+			"columns": 720,
+			"xllcorner": 0,
+			"yllcorner": 0,
+			"nodata": 0
+		}
 	},
+	"topology": {
+		"2d_nodes_file": {
+			"file": "grids/grid.gpkg",
+			"layer": "node_coordinates"
+		},
+		"2d_links_file": {
+			"file": "grids/grid.gpkg",
+			"layer": "link_coordinates"
+		}
+	},
+	"mesh": [
+		{
+			"file": "grids/grid.gpkg",
+			"layer": "node_mesh"
+		}
+	],
 	"results": [
 		{
 			"layer": "discharge",
