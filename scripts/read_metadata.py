@@ -12,4 +12,3 @@ metadata = json.loads(metadata_json.read_text())
 schema = json.loads(schema_json.read_text())
 
 validate(instance=metadata, schema=schema)
- 
