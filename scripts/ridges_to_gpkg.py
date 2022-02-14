@@ -1,6 +1,6 @@
 import geopandas as gpd
 from pathlib import Path
-from shapely.geometry import LineString
+from shapely.geometry import LineString, Point
 
 crs = "epsg:28992"
 
@@ -18,6 +18,17 @@ ridges_list = ridges_txt.split("\n-1")
 ridges_list = ridges_list[:-1]
 geoms = [ridge_to_line(ridge) for ridge in ridges_list]
 
-gpd.GeoDataFrame(data={"geometry":geoms}, crs=crs).to_file("ridges.gpkg",
-                                                           layer="ridges",
-                                                           driver="GPKG")
+pt_geoms = [[Point(j) for j in i.coords] for i in geoms]
+pt_geoms = [item for sublist in pt_geoms for item in sublist]
+
+ridges_gdf = gpd.GeoDataFrame(data={"geometry":geoms}, crs=crs)
+ridges_vertices_gdf = gpd.GeoDataFrame(data={"geometry":pt_geoms}, crs=crs)
+
+
+ridges_gdf.to_file("ridges.gpkg",
+                   layer="ridges",
+                   driver="GPKG")
+
+ridges_vertices_gdf.to_file("ridges.gpkg",
+                            layer="vertices",
+                            driver="GPKG")

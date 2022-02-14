@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+data/de_tol_small/case1/grids/grid.gpkg-shm
+data/de_tol_small/case1/grids/grid.gpkg-shm
+data/de_tol_small/case1/grids/grid.gpkg-wal

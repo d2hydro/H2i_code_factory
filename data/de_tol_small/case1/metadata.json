@@ -1,5 +1,5 @@
 {
-	"module_version": "0.0.1",
+	"module_version": "0.0.2",
 	"gridgen_version": "win_22_1_0",
 	"flow_version": "win_22_1_0",
 	"name": "de tol small",
@@ -37,12 +37,16 @@
 			"layer": "link_coordinates"
 		}
 	},
-	"mesh": [
-		{
+	"mesh": {
+		"nodes_mesh": {
 			"file": "grids/grid.gpkg",
 			"layer": "node_mesh"
+		},
+		"links_edges": {
+			"file": "grids/grid.gpkg",
+			"layer": "link_edges"
 		}
-	],
+	},
 	"results": [
 		{
 			"layer": "discharge",
