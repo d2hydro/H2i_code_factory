@@ -11,6 +11,8 @@ import time
 import rasterio
 from rasterio.features import shapes
 import numpy as np
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning) 
 
 #%%
 # path to H2Flo grid-files
@@ -96,6 +98,8 @@ for _,row in mesh_df.sort_values("area", ascending=False).iterrows():
             quad_y = (int((row["y"] - src.bounds.bottom) / dxy) + 0.5) *  dxy
             quad_mesh = xy_to_box(quad_x, quad_y, dxy)
             ridge = ridges_df[ridges_df.intersects(quad_mesh)].iloc[0]["geometry"]
+            ridge = ridge.intersection(quad_mesh)
+            ridge = LineString(ridge.boundary)
             mesh = next(i for i in split(quad_mesh, ridge).geoms if Point(row["x"], row["y"]).within(i))
         else:
             dxy, quad_x, quad_y = row["dxy"], row["x"], row["y"]
