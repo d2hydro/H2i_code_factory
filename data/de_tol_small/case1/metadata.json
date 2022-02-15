@@ -89,6 +89,15 @@
 			"units": "m+datum",
 			"topology_file": "2d_nodes",
 			"timesteps_file": "default"
+		},
+		{
+			"layer": "upwind velocity",
+			"result_file": "flows/ts/velocityupwind2d.dat",
+			"type": "velocity",
+			"units": "m/s",
+			"vector": true,
+			"topology_file": "2d_nodes",
+			"timesteps_file": "default"
 		}
 	]
 }
