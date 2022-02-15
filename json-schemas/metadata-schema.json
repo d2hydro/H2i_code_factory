@@ -234,7 +234,7 @@
 				},
 				"topology_file": {
 					"type": "string",
-                    "description": "Path to the topology file (2d_nodes or 2d_links) the result_file is to be referenced to",
+                    "description": "Reference to the topology file (2d_nodes or 2d_links) the result_file is to be referenced to",
 					"enum": [
 						"2d_links",
 						"2d_nodes"
@@ -242,7 +242,7 @@
 				},
 				"timesteps_file": {
 					"type": "string",
-                    "description": "Path to time specifications file",
+                    "description": "Reference to time specifications file",
 					"enum": [
 						"default"
 					]
