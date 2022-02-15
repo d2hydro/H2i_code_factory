@@ -1,7 +1,7 @@
 {
-	"module_version": "0.0.2",
-	"gridgen_version": "win_22_1_0",
-	"flow_version": "win_22_1_0",
+	"module_version": "0.0.3",
+	"gridgen_version": "win_22_2_0",
+	"flow_version": "win_22_2_0",
 	"name": "de tol small",
 	"crs": "epsg:28992",
 	"timesteps": {

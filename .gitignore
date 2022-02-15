@@ -130,3 +130,9 @@ dmypy.json
 data/de_tol_small/case1/grids/grid.gpkg-shm
 data/de_tol_small/case1/grids/grid.gpkg-shm
 data/de_tol_small/case1/grids/grid.gpkg-wal
+data/de_tol_small/case1/grids/node_dem.dia.aux.xml
+scripts/result.gif
+scripts/ridges.gpkg
+scripts/result.gpkg
+scripts/grids_to_gpkg.py
+*.gpkg-journal

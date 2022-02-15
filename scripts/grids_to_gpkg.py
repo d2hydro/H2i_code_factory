@@ -93,9 +93,9 @@ for _,row in mesh_df.sort_values("area", ascending=False).iterrows():
     links = [i for i in links if not i in links_edges.keys()]
     if links:
         if row["has_ridge"]:
-            dxy = row["dxy"]*2
-            quad_x = (int((row["x"] - src.bounds.left) / dxy) + 0.5) *  dxy
-            quad_y = (int((row["y"] - src.bounds.bottom) / dxy) + 0.5) *  dxy
+            dxy = row["dxy"]
+            quad_x = (int((row["x"] - src.bounds.left) / dxy) + 0.5) *  dxy + src.bounds.left
+            quad_y = (int((row["y"] - src.bounds.bottom) / dxy) + 0.5) *  dxy + src.bounds.bottom
             quad_mesh = xy_to_box(quad_x, quad_y, dxy)
             ridge = ridges_df[ridges_df.intersects(quad_mesh)].iloc[0]["geometry"]
             ridge = ridge.intersection(quad_mesh)
