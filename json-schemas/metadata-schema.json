@@ -2,9 +2,9 @@
 	"$schema": "http://json-schema.org/schema#",
 	"type": "object",
 	"required": [
-		"api_version",
-		"topology_version",
-		"results_version",
+		"module_version",
+		"gridgen_version",
+		"flow_version",
 		"name",
 		"crs",
 		"timesteps",
@@ -12,62 +12,188 @@
 		"results"
 	],
 	"properties": {
-		"api_version": {
-			"type": "string"
+		"module_version": {
+			"type": "string",
+			"description": "H2Flow Python API version used to create this metadata.json file"
 		},
-		"topology_version": {
-			"type": "string"
+		"gridgen_version": {
+			"type": "string",
+            "description": "Reference to the version of grids.exe, writing the topology files"
 		},
-		"results_version": {
-			"type": "string"
+		"flow_version": {
+			"type": "string",
+            "description": "Reference to the version of flows.exe, writing the result files"
 		},
 		"name": {
-			"type": "string"
+			"type": "string",
+            "description": "A user-supplied name for the model-case that can be used as a name for grouping the results in QGIS"
 		},
 		"crs": {
-			"type": "string"
+			"type": "string",
+            "description": "Coordinate reference system of the model"
 		},
 		"timesteps": {
 			"type": "object",
+            "description": "Describes model timesteps",
 			"required": [
-				"timesteps_file",
-				"start_datetime"
+				"default"
 			],
 			"properties": {
-				"timesteps_file": {
-					"type": "string"
-				},
-				"start_datetime": {
-					"type": "string",
-					"format": "date-time"
+				"default": {
+                    "$ref": "#/$defs/timesteps",
+                    "description": "Default model timesteps"
 				}
 			}
 		},
+        "subgrid": {
+            "type": "object",
+            "description": "Files related to the subgrid",
+            "required": [
+                "elevation",
+                "node_dem"
+            ],
+            "properties": {
+                "elevation": {
+                    "$ref": "#/$defs/raster",
+                    "description": "The DEM in ASCII format"
+                },
+                "node_dem": {
+                    "$ref": "#/$defs/raster",
+                    "description": "A raster file with same dimensions as the DEM that maps pixel to node number",
+                    "required": [
+                        "file",
+                        "rows",
+                        "columns",
+                        "xllcorner",
+                        "yllcorner",
+                        "nodata"
+                    ]
+                }
+            }
+        },
 		"topology": {
 			"type": "object",
+            "description": "Contains the links and nodes files that describe the model topology",
 			"required": [
-				"2d_nodes_file",
-				"2d_links_file"
+				"2d_nodes",
+				"2d_links"
 			],
 			"properties": {
-				"2d_nodes_file": {
-					"type": "string"
+				"2d_nodes": {
+                    "$ref": "#/$defs/layer"
 				},
-				"2d_links_file": {
-					"type": "string"
+				"2d_links": {
+                    "$ref": "#/$defs/layer"
+				}
+			}
+		},
+		"mesh": {
+			"type": "object",
+            "description": "Contains the links and nodes files that describe the model mesh",
+			"required": [
+				"nodes_mesh",
+				"links_edges"
+			],
+			"properties": {
+				"nodes_mesh": {
+                    "$ref": "#/$defs/layer"
+				},
+				"links_edges": {
+                    "$ref": "#/$defs/layer"
 				}
 			}
 		},
 		"results": {
 			"type": "array",
+            "description": "Array of model results",
 			"items": {
 				"$ref": "#/$defs/result"
 			}
 		}
 	},
 	"$defs": {
+		"timesteps": {
+			"type": "object",
+            "description": "Describes model timesteps",
+			"required": [
+				"timesteps_file",
+				"start_datetime"
+			],
+			"properties": {
+				"timesteps_file": {
+					"type": "string",
+                    "description": "File with timesteps specified (see Flows/ts)"
+				},
+				"start_datetime": {
+					"type": "string",
+                    "description": "ISO8601 formatted datetime string: YYYY-MM-DDThh:mm:ss",
+					"format": "date-time"
+				}
+			}
+		},
+        "layer": {
+            "type": "object",
+            "description": "Represents a data layer in a (geospatial) file",
+            "required": [
+                "file"
+            ],
+            "properties": {
+                "file": {
+                    "type": "string",
+                    "description": "File path"
+                },
+                "layer": {
+                    "type": "string",
+                    "description": "Layer name, in case of a file format that supports multiple layers"
+                }
+            }
+        },
+        "raster": {
+            "type": "object",
+            "description": "A raster in ESRI ASCII format",
+            "required": [
+                "file",
+                "rows",
+                "columns",
+                "cell_size",
+                "xllcorner",
+                "yllcorner",
+                "nodata"
+            ],
+            "properties": {
+                "file": {
+                    "type": "string",
+                    "description": "File path"
+                },
+                "rows": {
+                    "type": "integer",
+                    "description": "Number of rows"
+                },
+                "columns": {
+                    "type": "integer",
+                    "description": "Number of columns"
+                },
+                "cell_size": {
+                    "type": "number",
+                    "description": "Cell size"
+                },
+                "xllcorner": {
+                    "type": "integer",
+                    "description": "X index of the lower left corner"
+                },
+                "yllcorner": {
+                    "type": "integer",
+                    "description": "Y index of the lower left corner"
+                },
+                "nodata": {
+                    "type": "number",
+                    "description": "Nodata value"
+                }
+            }
+        },
 		"result": {
 			"type": "object",
+            "description": "A single model result",
 			"required": [
 				"layer",
 				"result_file",
@@ -78,10 +204,12 @@
 			],
 			"properties": {
 				"layer": {
-					"type": "string"
+					"type": "string",
+                    "description": "The layer-name of the output variable for reference in QGIS"
 				},
 				"result_file": {
-					"type": "string"
+					"type": "string",
+                    "description": "File in the flows/ts folder with result-values"
 				},
 				"type": {
 					"type": "string",
@@ -95,6 +223,7 @@
 				},
 				"units": {
 					"type": "string",
+                    "description": "Units of measurement",
 					"enum": [
 						"m",
 						"m3",
@@ -105,15 +234,17 @@
 				},
 				"topology_file": {
 					"type": "string",
+                    "description": "Reference to the topology file (2d_nodes or 2d_links) the result_file is to be referenced to",
 					"enum": [
-						"2d_links_file",
-						"2d_nodes_file"
+						"2d_links",
+						"2d_nodes"
 					]
 				},
 				"timesteps_file": {
 					"type": "string",
+                    "description": "Reference to time specifications file",
 					"enum": [
-						"timesteps_file"
+						"default"
 					]
 				}
 			}
