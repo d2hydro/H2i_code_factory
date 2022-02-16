@@ -20,5 +20,5 @@ with FortranFile(level_file,
     print(src.nrec)
     src.read_record()
     src.read_record()
-    first_row = src.read_record("f8")
-    second_row = src.read_record("f8")
+    velocity = src.read_record("f8")
+    direction = src.read_record("f8")

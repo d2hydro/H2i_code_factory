@@ -24,6 +24,7 @@
 			"file": "grids/node_dem.dia",
 			"rows": 680,
 			"columns": 720,
+			"cell_size": 0.5,
 			"xllcorner": 0,
 			"yllcorner": 0,
 			"nodata": 0

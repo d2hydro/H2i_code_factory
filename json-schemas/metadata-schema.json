@@ -221,6 +221,9 @@
 						"velocity"
 					]
 				},
+				"vector":{
+					"type":"boolean",
+				"description": "If true, the file contains both magnitude and direction"},
 				"units": {
 					"type": "string",
                     "description": "Units of measurement",
