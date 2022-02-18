@@ -30,6 +30,12 @@ The grids-folder contains the following files with a structure as explained:
 **node_dem.dia** An ESRI ASCII file (https://desktop.arcgis.com/en/arcmap/10.3/manage-data/raster-and-images/esri-ascii-raster-format.htm) on the resolution of, and alligned with the DEM-raster.
 Every cell contains the topology node-number the DEM-cell is mapped to.
 
+**grid.gpkg** A GeoPackage (https://www.geopackage.org/) containing a postprocessed grid into four layers:
+ 1. **link_coordinates**: the information of *link_coordinates.dia* in attributes including the link as *LineString* geometry
+ 2. **node_coordinates**: the information of *node_coordinates.dia* in attributes including the node as *Point* geometry
+ 3. **node_mask**: the information of *node_coordinates.dia* in attributes including the shaped-version of *node_dem.dia* as *Polygon* goemetry
+ 4. **node_mesh**: the information of *node_coordinates.dia* in attributes but as the most accurate possible representation of the mesh-topology. This layer will differ from *node_mask* at ridges as it will here be represented by straight lines.
+
 ## Flows/ts
 The flows/ts-folder contains the results of a H2Flo run:
 **timesteps.asc**: A space-seperated-value ASCI file with the following columns:
