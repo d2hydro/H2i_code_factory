@@ -2,7 +2,7 @@
 Here we describe the structure of a H2Flo project and the structure of its files.
 
 ## metadata.json
-A JSON file containing the metadata of a H2Flo project. The content of keys are explained in the JSON-schema file `metadata-schema.json`.
+A JSON file containing the metadata of a H2Flo project. The content of keys are explained in the JSON-schema file [`metadata-schema.json`](../json-schemas/metadata-schema.json).
 
 ## Grids
 The grids-folder contains the following files with a structure as explained:

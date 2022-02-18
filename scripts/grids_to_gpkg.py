@@ -50,8 +50,6 @@ mask_df.loc[~nodes_df["has_ridge"], "geometry"] = mask_df.loc[~nodes_df["has_rid
     axis=1
     )
 
-#ridges are to be rasterized from the node_dem
-
 ridge_numbers = mask_df[mask_df["has_ridge"]].index.to_list()
 with rasterio.Env():
     with rasterio.open(node_dem) as src:
@@ -110,31 +108,6 @@ for _,row in mask_df.sort_values("area", ascending=False).iterrows():
         dxy, quad_x, quad_y = row["dxy"], row["x"], row["y"]
         mesh = xy_to_box(quad_x, quad_y, row["dxy"])
     node_mesh[row.name]["geometry"] = mesh
-    # if links:
-    #     mesh_coords = [i for i in mesh.boundary.coords]
-    #     edges = [LineString((i, mesh_coords[idx+1])) for idx, i in enumerate(mesh_coords[:-1])]
-    #     for link in links:
-    #         row_out = links_df.loc[link].to_dict()
-    #         geometry = [
-    #             i for i in edges if i.intersects(row_out["geometry"])
-    #             ]
-    #         if len(geometry) == 1:
-    #             row_out["geometry"] = geometry[0]
-    #         elif len(geometry) == 0:
-    #             dist = [i.distance(row_out["geometry"]) for i in edges]
-    #             min_dist = min(dist)
-    #             row_out["geometry"] = edges[dist.index(min_dist)]
-    #         else:
-    #             dist = [i.distance(row_out["geometry"].centroid) for i in edges]
-    #             min_dist = min(dist)
-    #             row_out["geometry"] = edges[dist.index(min_dist)]
-            
-    #         links_edges[link] = row_out
-        
-# links_edges_df = gpd.GeoDataFrame.from_dict(links_edges, orient="index")
-# links_edges_df.set_crs(f"epsg:{epsg}", inplace=True)
-# links_edges_df.index.name="number"
-# links_edges_df.to_file(gpkg_path, layer="link_edges", driver="GPKG")
 
 
 #%%
