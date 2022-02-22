@@ -51,4 +51,8 @@ Multiple Fortran Unformatted Binary Files that can be read by fortio https://pyp
 * **velocityupwind2d.dat** upwind velocity (m3/s) ánd direction (radians) at nodes (vector data)
 * **speedmax2d.dat** max velocity of all subgridcells @ nodes.
 
-In **velocityupwind2d.dat** all uneven records (first, third, fifth, ...) contain velocity magnitue. All even records (second, fourth, sixth, ..) contain direction in radians.
+In **velocityupwind2d.dat** all uneven records (first, third, fifth, ...) contain velocity magnitue. All even records (second, fourth, sixth, ..) contain direction in radians. Direction is represented by floats ranging from -Pi to Pi, where:
+ * 0 = North
+ * Pi = South
+ * 0.5Pi = East
+ * -0.5Pi = West
