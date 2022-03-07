@@ -136,3 +136,5 @@ scripts/ridges.gpkg
 scripts/result.gpkg
 scripts/grids_to_gpkg.py
 *.gpkg-journal
+data/bedok_demo/flows/*
+data/bedok_demo/grids/*
