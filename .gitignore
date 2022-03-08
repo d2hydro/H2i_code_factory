@@ -138,3 +138,4 @@ scripts/grids_to_gpkg.py
 *.gpkg-journal
 data/bedok_demo/flows/*
 data/bedok_demo/grids/*
+data/de_tol_small/case1/gtiffs/*
